@@ -19,9 +19,9 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
-import CloseButton from '../../components/CloseButton';
-import Blur from '../../components/Blur';
-import Quiz from '../../components/Quiz';
+import CloseButton from '../../components/CloseButton/index';
+import Blur from '../../components/Blur/index';
+import Quiz from '../../components/Quiz/index';
 import {
   App,
   Container,
