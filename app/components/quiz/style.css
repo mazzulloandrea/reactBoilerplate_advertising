@@ -1,0 +1,34 @@
+@keyframes textPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.7);
+  }
+}
+
+.containerQuiz {
+  display: flex;
+  flex-direction: column;
+}
+
+.text {
+  text-align: center;
+  padding: 1vh;
+  animation: textPulse 0.5s infinite;
+  font-weight: bold;
+  color: orange;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.containerQuiz img {
+  width: 10vw;
+  margin-right: 6vw;
+}
