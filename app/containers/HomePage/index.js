@@ -5,7 +5,7 @@
  */
 
 import React, { useEffect, useState, memo } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // import { Helmet } from 'react-helmet';
 // import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
@@ -19,9 +19,16 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
-import CloseButton from './components/CloseButton';
-import Blur from './components/Blur';
-import Quiz from './components/Quiz';
+import CloseButton from 'components/CloseButton';
+import Blur from 'components/Blur';
+import Quiz from 'components/Quiz';
+import {
+  App,
+  Container,
+  CloseContainer,
+  BlurSection,
+  QuizSection,
+} from './styled';
 // import H2 from 'components/H2';
 // import ReposList from 'components/ReposList';
 // import AtPrefix from './AtPrefix';
@@ -38,57 +45,46 @@ import saga from './saga';
 
 const key = 'home';
 
-export function HomePage({
-  username,
-  loading,
-  error,
-  repos,
-  onSubmitForm,
-  onChangeUsername,
-}) {
+export function HomePage() {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
 
   const [closeAnimation, setCloseAnimation] = useState(null);
 
-  useEffect(() => { }, []);
+  // useEffect(() => { }, []);
 
   useEffect(() => {
     if (closeAnimation && closeAnimation !== 'open') {
       console.log(closeAnimation);
     }
     if (closeAnimation === 'close') {
-      const anim = document.getElementById("animation");
-      anim.classList.toggle("exit");
-      anim.onanimationend = (evt => evt.target.style.right = '-100vw')
+      const anim = document.getElementById('animation');
+      anim.classList.toggle('exit');
+      anim.onanimationend = evt => (evt.target.style.right = '-100vw');
     }
   }, [closeAnimation]);
 
   return (
-    <div id="app">
-      <div id="animation" className="container" onAnimationEnd={() => setCloseAnimation('open')}>
-        <div className="closeContainer" >
+    <App>
+      <Container
+        id="animation"
+        onAnimationEnd={() => setCloseAnimation('open')}
+      >
+        <CloseContainer>
           <CloseButton closeAnimation={() => setCloseAnimation('close')} />
-        </div>
-        <div className="blurSection" onClick={() => window.open("http://www.google.it")}>
+        </CloseContainer>
+        <BlurSection onClick={() => window.open('http://www.google.it')}>
           <Blur />
-        </div>
-        <div className="quizSection" onClick={() => window.open("http://www.google.it")}>
+        </BlurSection>
+        <QuizSection onClick={() => window.open('http://www.google.it')}>
           <Quiz />
-        </div>
-      </div>
-    </div>
+        </QuizSection>
+      </Container>
+    </App>
   );
 }
 
-HomePage.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func,
-};
+HomePage.propTypes = {};
 
 const mapStateToProps = createStructuredSelector({
   repos: makeSelectRepos(),

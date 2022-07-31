@@ -1,16 +1,17 @@
-import car from '../../assets/images/car.png';
-import './style.css';
+import React from 'react';
+import car from 'images/car.png';
+import { Focus, FocusMask, FocusMaskInner } from './style';
 
 function Blur() {
   return (
-    <div className="focus">
-      <div className="focusMask">
-        <div className="focusMaskInner">
+    <Focus>
+      <FocusMask>
+        <FocusMaskInner>
           <img src={car} alt="" />
-        </div>
-      </div>
-    </div>
-  )
+        </FocusMaskInner>
+      </FocusMask>
+    </Focus>
+  );
 }
 
 export default Blur;
