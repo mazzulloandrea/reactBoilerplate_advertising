@@ -19,9 +19,9 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
-import CloseButton from '../../components/CloseButton/index';
-import Blur from '../../components/Blur/index';
-import Quiz from '../../components/Quiz/index';
+// import CloseButton from 'components/CloseButton';
+import Blur from 'components/Blur';
+// import Quiz from 'components/Quiz';
 import {
   App,
   Container,
@@ -71,13 +71,13 @@ export function HomePage() {
         onAnimationEnd={() => setCloseAnimation('open')}
       >
         <CloseContainer>
-          <CloseButton closeAnimation={() => setCloseAnimation('close')} />
+          {/* <CloseButton closeAnimation={() => setCloseAnimation('close')} /> */}
         </CloseContainer>
         <BlurSection onClick={() => window.open('http://www.google.it')}>
           <Blur />
         </BlurSection>
         <QuizSection onClick={() => window.open('http://www.google.it')}>
-          <Quiz />
+          {/* <Quiz /> */}
         </QuizSection>
       </Container>
     </App>
